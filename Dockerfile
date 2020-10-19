@@ -1,16 +1,16 @@
-FROM alpine as build
+FROM 0x01be/lend:build as build
 
-RUN apk add --no-cache --virtual lens-build-dependencies \
-    git \
-    build-base \
-    python3-dev \
-    npm \
-    yarn
+FROM 0x01be/xpra
 
-ENV LENS_REVISION master
-RUN git clone --depth 1 --branch ${LENS_REVISION} https://github.com/lensapp/lens.git /lens
+COPY --from=build /opt/lens/ /opt/lens/
 
-WORKDIR /lens
+USER root
+RUN apk add --no-cache --virtual lens-runtime-dependencies \
+    nodejs
 
-RUN make build
+USER xpra
+
+ENV PATH ${PATH}:/opt/lens/bin/
+
+ENV COMMAND lens
 
