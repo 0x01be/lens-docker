@@ -21,10 +21,5 @@ RUN yarn install
 RUN yarn download-bins
 RUN yarn compile:main
 RUN yarn compile:renderer
-
-RUN mkdir -p /root/.cache/electron-builder/appimage/appimage-12.0.1/linux-x64/
-RUN ln -s /sbin/mksquashfs /root/.cache/electron-builder/appimage/appimage-12.0.1/linux-x64/mksquashfs
-
-RUN yarn build:linux
-RUN yarn dist
+RUN yarn build:linux 
 
