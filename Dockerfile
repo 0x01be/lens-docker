@@ -2,6 +2,7 @@ FROM alpine as build
 
 RUN apk add --no-cache --virtual lens-build-dependencies \
     git \
+    build-base \
     npm \
     yarn \
     p7zip \
