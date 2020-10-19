@@ -12,5 +12,9 @@ RUN git clone --depth 1 --branch ${LENS_REVISION} https://github.com/lensapp/len
 
 WORKDIR /lens
 
+RUN apk add p7zip
+RUN mkdir -p /lens/node_modules/7zip-bin/linux/x64/
+RUN ln -s /usr/bin/7za /lens/node_modules/7zip-bin/linux/x64/7za
+
 RUN make build
 
