@@ -5,7 +5,8 @@ RUN apk add --no-cache --virtual lens-build-dependencies \
     npm \
     yarn \
     p7zip \
-    squashfs-tools
+    squashfs-tools \
+    python3
 
 ENV LENS_REVISION master
 RUN git clone --depth 1 --branch ${LENS_REVISION} https://github.com/lensapp/lens.git /lens
