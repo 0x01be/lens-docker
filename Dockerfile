@@ -6,12 +6,9 @@ COPY --from=build /lens/dist/linux-unpacked/ /opt/lens/
 
 USER root
 RUN apk add --no-cache --virtual lens-runtime-dependencies \
-    nodejs \
     nss \
     mesa-gbm \
-    libxscrnsaver \
-    gcompat \
-    ffmpeg
+    libxscrnsaver
 
 RUN mkdir -p /tmp/.X11-unix
 RUN chmod 1777 /tmp/.X11-unix
